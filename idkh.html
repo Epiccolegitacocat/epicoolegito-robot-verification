@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Robot Verification</title>
+  <script>
+    // Recursive function to generate HTML
+    function generateHTML() {
+      var html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Generated HTML</title>
+        </head>
+        <body>
+          <h1>Generated HTML</h1>
+          <p>This is a generated HTML page.</p>
+          <p>Click the button below to generate another HTML page.</p>
+          <button onclick="generateHTML()">Generate HTML</button>
+        </body>
+        </html>
+      `;
+      
+      // Create a new HTML file and open it
+      var file = new Blob([html], {type: 'text/html'});
+      var url = URL.createObjectURL(file);
+      window.open(url);
+      
+      // Generate 10 more HTML pages
+      for (var i = 0; i < 100; i++) {
+        var generatedHTML = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Generated HTML ${i+2}</title>
+          </head>
+          <body>
+            <h1>Generated HTML ${i+2}</h1>
+            <p>This is generated HTML page ${i+2}.</p>
+            <p>Click the button below to generate another HTML page.</p>
+            <button onclick="generateHTML()">This Button Does Nothing!</button>
+          </body>
+          </html>
+        `;
+        
+        // Create a new HTML file and open it
+        var generatedFile = new Blob([generatedHTML], {type: 'text/html'});
+        var generatedURL = URL.createObjectURL(generatedFile);
+        window.open(generatedURL);
+      }
+    }
+  </script>
+</head>
+<H1> Click to verify if you are a robot. </H1>
+<H2> If you are human, press [True].</H2>
+<H2> Robot will automatically click false.</H2>
+<body>
+  <button onclick="generateHTML()">True</button>
+  <button onclick="generateHTML()">False</button>
+</body>
+</html>
